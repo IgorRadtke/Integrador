@@ -1,0 +1,59 @@
+body{
+    margin: 0%;
+    padding: 10%;
+    background-image: url(../IMG/login_pag.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: "Comfortaa" sans-serif;
+}
+h1{
+    width: 600px;
+    font-size:25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-align:left;
+
+}
+.Nutricionista img {
+    width: 90px;
+    padding: 10px;
+    padding-right:  30px;
+}
+.Cliente img {
+    height: 60px;
+    width: 60px;
+    padding: 10px;
+    padding-right:  30px;
+ }
+
+.Nutricionista {
+    display: flex;
+    align-items: center;
+    background-color:rgba(255, 255, 255, 0.924) ;
+    border-radius: 20px;
+
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    padding-left: 100px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+
+}
+
+.Cliente {
+    display: flex;
+    align-items: center;
+    background-color:rgba(255, 255, 255, 0.924) ;
+    border-radius: 20px;
+
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    padding-left: 125px;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+
+}
