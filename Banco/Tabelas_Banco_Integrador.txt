@@ -1,0 +1,72 @@
+CREATE database acad;
+
+CREATE TABLE Nutricionista (
+    Email VARCHAR not null,
+    Nome VARCHAR not null,
+    Senha VARCHAR not null,
+    CRN VARCHAR not null,
+    constraint pk_Nutricionista primary key (CRN)
+);
+
+CREATE TABLE Cliente (
+    CodCli VARCHAR not null,
+    Nome VARCHAR not null,
+    Fone VARCHAR not null,
+    Email VARCHAR not null,
+    Senha VARCHAR not null,
+    DataNasc DATE not null,
+    CRN VARCHAR not null,
+    constraint fk_Cliente_Nutricionista foreign key (CRN) references Nutricionista(CRN),
+    constraint pk_Cliente primary key (CodCli)
+
+);
+
+CREATE TABLE Avaliacao (
+    CPF VARCHAR not null,
+    Toma_Medicamento VARCHAR not null,
+    Doencas VARCHAR not null,
+    Lesoes VARCHAR not null,
+    Tipo_Fisico VARCHAR not null,
+    Objetivo VARCHAR not null,
+    CRN VARCHAR not null,    
+    constraint pk_Avaliacao primary key (CPF, CRN),
+    constraint fk_Avaliacao_Cliente foreign key (CPF) references Cliente(CodCli),
+    constraint fk_Avaliacao_Nutricionista foreign key (CRN) references Nutricionista(CRN)
+
+);
+
+CREATE TABLE Treino (
+    CPF VARCHAR not null,
+    CRN VARCHAR not null,
+    Peso FLOAT not null,
+    Repeticoes INTEGER not null,
+    Exercicios VARCHAR not null,
+    constraint pk_Treino primary key (CPF),
+    constraint fk_Treino_Cliente foreign key (CPF) references Cliente(CodCli),
+    constraint fk_Treino_Nutricionista foreign key (CRN) references Nutricionista(CRN)
+);
+
+CREATE TABLE Refeicoes (
+    CPF VARCHAR not null,
+    CRN VARCHAR not null,
+    Cafe VARCHAR not null,
+    Almoco VARCHAR not null,
+    Janta VARCHAR not null,
+    Lanche VARCHAR not null,
+    constraint pk_Refeicoes primary key (CPF),
+    constraint fk_Refeicoes_Cliente foreign key (CPF) references Cliente(CodCli),
+    constraint fk_Refeicoes_Nutricionista foreign key (CRN) references Nutricionista(CRN)
+);
+
+CREATE TABLE Medidas (
+    CPF VARCHAR not null,
+    BF FLOAT not null,
+    IMC FLOAT not null,
+    Medida_Coxa FLOAT not null,
+    Medida_Braco FLOAT not null, 
+    Medida_Torax FLOAT not null,
+    Peso INTEGER not null,
+    DataRes DATE not null,
+    constraint pk_Medidas primary key (CPF,DataRes),
+    constraint fk_Medidas_Cliente foreign key (CPF) references Cliente(CodCli)
+);
